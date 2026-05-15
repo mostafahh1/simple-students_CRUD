@@ -99,7 +99,7 @@ java -jar students_CRUD.jar
 
 ## Show All Students
 
-<img src="https://github.com/mostafahh1/simple-students_CRUD/blob/master/blob/main/screenshot/Show.png" alt="img" width="400"/>&nbsp;
+<img src="https://github.com/mostafahh1/simple-students_CRUD/blob/master/blob/master/screenshot/Show.png" alt="img" width="400"/>&nbsp;
 
 ---
 
