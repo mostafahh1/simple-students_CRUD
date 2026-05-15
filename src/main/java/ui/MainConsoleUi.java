@@ -56,9 +56,14 @@ public class MainConsoleUi {
                 System.out.print("ID: ");
                 int id = sc.nextInt();
 
-                Student student = new Student();
-                student.setId(id);
-                StudentDAO.getById(student);
+                Student student = StudentDAO.getById(id);
+
+                if (student != null) {
+                    System.out.println("Name: " + student.getName());
+                    System.out.println("GPA: " + student.getGpa());
+                } else {
+                    System.out.println("Not found!");
+                }
 
             } else if (choice == 3) {
                 ArrayList<Student> students = StudentDAO.getAll();
