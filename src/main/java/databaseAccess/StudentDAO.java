@@ -30,8 +30,7 @@ public class StudentDAO {
 
         String sql = "INSERT INTO students(id, name, gpa) VALUES(?, ?, ?)";
 
-        try {
-            PreparedStatement ps = conn.prepareStatement(sql);
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setInt(1, id);
             ps.setString(2, name);
@@ -47,37 +46,38 @@ public class StudentDAO {
     }
 
     /**
-     * Retrieves a student from the database by ID.
+     * Get student by ID.
      *
-     * This method queries the database using the student's ID
-     * and prints the student's details if found.
-     *
-     * @param student Student object containing the ID to search for
+     * @param id student ID
+     * @return Student if found, otherwise null
      */
-    public static void getById(Student student) {
+    public static Student getById(int id) {
 
 
         String sql = "SELECT name, gpa FROM students WHERE id = ?";
 
-        try {
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            PreparedStatement ps = conn.prepareStatement(sql);
-
-            int id = student.getId();
             ps.setInt(1, id);
 
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                System.out.println("Name: " + rs.getString("name"));
-                System.out.println("GPA: " + rs.getDouble("gpa"));
+
+                String name = rs.getString("name");
+                double gpa = rs.getDouble("gpa");
+
+                Student student = new Student(id, name, gpa);
+                return student;
+
             } else {
-                System.out.println("Not found!");
+                return null;
             }
 
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
+        return null;
     }
 
     /**
@@ -89,8 +89,7 @@ public class StudentDAO {
         ArrayList<Student> students = new ArrayList<>();
         String sql = "SELECT * FROM students";
 
-        try {
-            PreparedStatement ps = conn.prepareStatement(sql);
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ResultSet rs = ps.executeQuery();
 
@@ -120,8 +119,7 @@ public class StudentDAO {
 
         String sql = "UPDATE students SET gpa = ? WHERE id = ?";
 
-        try {
-            PreparedStatement ps = conn.prepareStatement(sql);
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
 
             double gpa = student.getGpa();
             ps.setDouble(1, gpa);
@@ -153,8 +151,7 @@ public class StudentDAO {
 
         String sql = "DELETE FROM students WHERE id = ?";
 
-        try {
-            PreparedStatement ps = conn.prepareStatement(sql);
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
             int id = student.getId();
             ps.setInt(1, id);
 
