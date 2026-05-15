@@ -27,7 +27,7 @@ public class DBConnection {
 
                 CREATE TABLE IF NOT EXISTS students (
 
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    id INTEGER PRIMARY KEY,
                     name TEXT NOT NULL,
                     gpa REAL
 
