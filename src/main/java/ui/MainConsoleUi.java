@@ -116,8 +116,11 @@ public class MainConsoleUi {
             sc.nextLine(); // wait for Enter key
 
             //delet all data on console:
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
+            try {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
