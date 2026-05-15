@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="students_CRUD:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/students_CRUD_jar</output-path>
+    <root id="archive" name="students_CRUD.jar">
+      <element id="module-output" name="students_CRUD" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/xerial/sqlite-jdbc/3.45.3.0/sqlite-jdbc-3.45.3.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/2.0.13/slf4j-api-2.0.13.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-simple/2.0.13/slf4j-simple-2.0.13.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
