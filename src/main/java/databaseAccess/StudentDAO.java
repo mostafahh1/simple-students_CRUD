@@ -5,12 +5,24 @@ import java.sql.ResultSet;
 import model.Student;
 import java.util.ArrayList;
 
+/**
+ * Data Access Object (DAO) for Student entity.
+ *
+ * This class handles all database operations related to Student,
+ * including insert, select, update, and delete operations.
+ *
+ * It communicates directly with the SQLite database using JDBC.
+ */
 public class StudentDAO {
 
     private static Connection conn = DBConnection.getConnection();
 
-
-    // ================= INSERT =================
+    /**
+     * Inserts a new student into the database.
+     *
+     * @param student the student object to insert
+     * @return true if inserted successfully, false otherwise
+     */
     public static boolean insert(Student student) {
         int id = student.getId();
         String name = student.getName();
@@ -34,8 +46,14 @@ public class StudentDAO {
         return false; // in case of error
     }
 
-
-    // ================= SELECT BY ID =================
+    /**
+     * Retrieves a student from the database by ID.
+     *
+     * This method queries the database using the student's ID
+     * and prints the student's details if found.
+     *
+     * @param student Student object containing the ID to search for
+     */
     public static void getById(Student student) {
 
 
@@ -62,8 +80,11 @@ public class StudentDAO {
         }
     }
 
-
-    // ================= SELECT ALL =================
+    /**
+     * Retrieves all students from the database.
+     *
+     * @return list of students
+     */
     public static ArrayList<Student> getAll() {
         ArrayList<Student> students = new ArrayList<>();
         String sql = "SELECT * FROM students";
@@ -89,7 +110,12 @@ public class StudentDAO {
         return students; // in case of error, return empty list
     }
 
-    // ================= UPDATE Gpa =================
+    /**
+     * Updates GPA of a student based on ID.
+     *
+     * @param student student object containing id and new GPA
+     * @return true if updated, false if not found
+     */
     public static boolean updateGpa(Student student) {
 
         String sql = "UPDATE students SET gpa = ? WHERE id = ?";
@@ -116,7 +142,12 @@ public class StudentDAO {
         return false; // in case of error
     }
 
-    // ================= DELETE =================
+    /**
+     * Deletes a student from database by ID.
+     *
+     * @param student student object containing id
+     * @return true if deleted, false if not found
+     */
     public static boolean delete(Student student) {
 
 

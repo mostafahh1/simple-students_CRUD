@@ -5,8 +5,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import model.Student;
 
+/**
+ * Console-based user interface for managing students.
+ * Handles all user input and menu operations.
+ */
 public class MainConsoleUi {
 
+    /**
+     * Starts the console menu loop and handles user actions.
+     */
     public MainConsoleUi() {
         Scanner sc = new Scanner(System.in);
 
